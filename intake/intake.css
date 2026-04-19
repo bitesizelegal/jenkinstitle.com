@@ -1,0 +1,434 @@
+/* Jenkins Title Intake Forms — extends site design system */
+
+/* ---- FORM PICKER ---- */
+.form-picker {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.form-picker .card {
+  cursor: pointer;
+  position: relative;
+}
+.form-picker .card:hover {
+  border-top-color: var(--teal-dark);
+}
+.form-picker .card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.form-picker .card .coming-soon {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: var(--text-light);
+  color: var(--white);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+}
+
+/* ---- FORM CONTAINER ---- */
+.intake-form {
+  display: none;
+  max-width: 780px;
+  margin: 0 auto;
+}
+.intake-form.active {
+  display: block;
+}
+.form-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--teal-dark);
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+.form-back:hover {
+  color: var(--navy);
+}
+.form-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+.form-subtitle {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+/* ---- FORM SECTIONS ---- */
+.form-section {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+.form-section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---- FORM FIELDS ---- */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.field-row.triple {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.field-row.single {
+  grid-template-columns: 1fr;
+}
+.field-group {
+  display: flex;
+  flex-direction: column;
+}
+.field-group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.3rem;
+}
+.field-group label .required {
+  color: #D32F2F;
+  margin-left: 2px;
+}
+.field-group input,
+.field-group select,
+.field-group textarea {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  transition: var(--transition);
+}
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(58, 175, 169, 0.12);
+}
+.field-group input.error,
+.field-group select.error {
+  border-color: #D32F2F;
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+}
+.field-error {
+  font-size: 0.78rem;
+  color: #D32F2F;
+  margin-top: 0.25rem;
+  display: none;
+}
+.field-group input.error + .field-error {
+  display: block;
+}
+.field-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* ---- CHECKBOXES & RADIOS ---- */
+.checkbox-group,
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.checkbox-item,
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+.checkbox-item input,
+.radio-item input {
+  accent-color: var(--teal);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.conditional-field {
+  display: none;
+  margin-top: 0.5rem;
+  margin-left: 1.5rem;
+}
+.conditional-field.visible {
+  display: block;
+}
+
+/* ---- EXPANDABLE SECTIONS ---- */
+.expand-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--teal-dark);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  padding: 0.5rem 0;
+}
+.expand-toggle:hover {
+  color: var(--navy);
+}
+.expandable {
+  display: none;
+}
+.expandable.visible {
+  display: block;
+}
+
+/* ---- YES/NO QUESTIONNAIRE ---- */
+.questionnaire-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.questionnaire-item:last-child {
+  border-bottom: none;
+}
+.questionnaire-item .q-label {
+  font-size: 0.92rem;
+  flex: 1;
+  padding-right: 1rem;
+}
+.questionnaire-item .q-options {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ---- LENDER ROWS ---- */
+.lender-block {
+  background: var(--sand);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.lender-block-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+}
+
+/* ---- SIGNATURE PAD ---- */
+.signature-block {
+  margin-top: 1rem;
+}
+.signature-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
+}
+.signature-canvas-wrap {
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.signature-canvas-wrap canvas {
+  display: block;
+  width: 100%;
+  height: 150px;
+  cursor: crosshair;
+}
+.signature-canvas-wrap.error {
+  border-color: #D32F2F;
+}
+.signature-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+.signature-actions button {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-light);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.signature-actions button:hover {
+  border-color: var(--teal);
+  color: var(--teal-dark);
+}
+
+/* ---- LEGAL TEXT ---- */
+.legal-text {
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  line-height: 1.55;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: var(--sand);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--teal);
+}
+.legal-text strong {
+  color: var(--text);
+}
+
+/* ---- ENTITY DOC CHECKLIST ---- */
+.doc-checklist {
+  columns: 2;
+  column-gap: 2rem;
+  margin-bottom: 1rem;
+}
+.doc-checklist-group {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+.doc-checklist-group h4 {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.35rem;
+}
+.doc-checklist-group ul {
+  list-style: none;
+  padding: 0;
+}
+.doc-checklist-group li {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  padding: 0.15rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+.doc-checklist-group li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+}
+
+/* ---- SUBMIT AREA ---- */
+.form-submit {
+  text-align: center;
+  margin-top: 2rem;
+}
+.form-submit .btn {
+  min-width: 240px;
+}
+.submit-note {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-top: 0.75rem;
+}
+
+/* ---- CONFIRMATION ---- */
+.confirmation {
+  display: none;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+.confirmation.active {
+  display: block;
+}
+.confirmation-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1.5rem;
+  background: var(--teal);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.confirmation h2 {
+  margin-bottom: 0.75rem;
+}
+.confirmation p {
+  color: var(--text-mid);
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+}
+
+/* ---- INFO NOTE ---- */
+.info-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: #E8F4FD;
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.88rem;
+  color: var(--text-mid);
+}
+.info-note svg {
+  flex-shrink: 0;
+  color: var(--teal-dark);
+  margin-top: 2px;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 992px) {
+  .form-picker {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .form-picker {
+    grid-template-columns: 1fr;
+  }
+  .field-row,
+  .field-row.triple {
+    grid-template-columns: 1fr;
+  }
+  .form-section {
+    padding: 1.25rem;
+  }
+  .doc-checklist {
+    columns: 1;
+  }
+  .questionnaire-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+}
